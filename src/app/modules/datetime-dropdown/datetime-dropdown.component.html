@@ -1,0 +1,41 @@
+<form [formGroup]="datetimeForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label>From Date</label>
+      <select formControlName="fromDate">
+        <option *ngFor="let date of dates" [value]="date">{{ date }}</option>
+      </select>
+  
+      <label>Hour</label>
+      <select formControlName="fromHour">
+        <option *ngFor="let hour of hours" [value]="hour">{{ hour }}</option>
+      </select>
+  
+      <label>Minute</label>
+      <select formControlName="fromMinute">
+        <option *ngFor="let minute of minutes" [value]="minute">{{ minute }}</option>
+      </select>
+    </div>
+  
+    <div>
+      <label>To Date</label>
+      <select formControlName="toDate">
+        <option *ngFor="let date of dates" [value]="date">{{ date }}</option>
+      </select>
+  
+      <label>Hour</label>
+      <select formControlName="toHour">
+        <option *ngFor="let hour of hours" [value]="hour">{{ hour }}</option>
+      </select>
+  
+      <label>Minute</label>
+      <select formControlName="toMinute">
+        <option *ngFor="let minute of minutes" [value]="minute">{{ minute }}</option>
+      </select>
+  
+      <div *ngIf="datetimeForm.get('toDate')?.hasError('dateError')" class="error">
+        To Date and Time cannot be less than From Date and Time
+      </div>
+    </div>
+  
+    <button type="submit" [disabled]="!datetimeForm.valid">Submit</button>
+  </form>

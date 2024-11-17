@@ -1,0 +1,51 @@
+<form [formGroup]="form" (ngSubmit)="submitForm()">
+    <div class="box">
+        <div class="inner-div">
+            <div>
+                <label>From Date</label>
+                <input type="date" formControlName="fromDate" />
+              </div>
+              
+              <div>
+                <label>From Hour</label>
+                <select formControlName="fromHour">
+                  <option *ngFor="let hour of hours" [value]="hour['value']">{{ hour.text }}</option>
+                </select>
+              </div>
+              
+              <div>
+                <label>From Minute</label>
+                <select formControlName="fromMinute">
+                  <option *ngFor="let minute of minutes" [value]="minute">{{ minute }}</option>
+                </select>
+              </div>
+        </div>
+        <div class="inner-div">
+            <div>
+                <label>To Date</label>
+                <input type="date" formControlName="toDate" />
+              </div>
+              
+              <div>
+                <label>To Hour</label>
+                <select formControlName="toHour">
+                  <option *ngFor="let hour of hours" [value]="hour['value']">{{ hour.text }}</option>
+                </select>
+              </div>
+          
+              <div>
+                <label>To Minute</label>
+                <select formControlName="toMinute">
+                  <option *ngFor="let minute of minutes" [value]="minute">{{ minute }}</option>
+                </select>
+              </div>
+        </div>
+    </div>
+
+    <div class="custom-button">
+        <button type="submit" [disabled]="form.invalid">Submit</button>
+        <div *ngIf="form.hasError('invalidTime')">
+            <p style="color: red;">"To" time must be greater than "From" time.</p>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,21 @@
+  table {
+    width: 100%;
+    th.mat-header-cell {
+      padding-right: 10px;
+    }
+  }
+
+mat-header-cell {
+  display: flex;
+  align-items: center;
+}
+
+.custom-sort-filter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  mat-icon {
+    position: relative;
+    top: 5px;
+  }
+}
